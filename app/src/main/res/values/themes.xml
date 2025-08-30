@@ -6,4 +6,17 @@
     </style>
 
     <style name="Theme.Calculator" parent="Base.Theme.Calculator" />
+
+    <style name="CalculatorButton">
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="fontFamily">@font/doppio</item>
+    </style>
+    <style name="CalculatorButton.Number">
+        <item name="android:background">@drawable/circle_button</item>
+        <item name="android:textColor">@color/brown</item>
+    </style>
+    <style name="CalculatorButton.Operation">
+        <item name="android:background">@drawable/circle_button_orange</item>
+        <item name="android:textColor">@color/LightGray</item>
+    </style>
 </resources>
