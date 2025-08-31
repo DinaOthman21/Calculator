@@ -35,11 +35,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.add.setOnClickListener { appendToResult("+") }
-        binding.subtract.setOnClickListener { appendToResult("-") }
-        binding.multiply.setOnClickListener { appendToResult("*") }
-        binding.divide.setOnClickListener { appendToResult("/") }
-        binding.percent.setOnClickListener { appendToResult("%") }
+        binding.add.setOnClickListener { appendToResult(" + ") }
+        binding.subtract.setOnClickListener { appendToResult(" - ") }
+        binding.multiply.setOnClickListener { appendToResult(" x ") }
+        binding.divide.setOnClickListener { appendToResult(" / ") }
+        binding.percent.setOnClickListener { appendToResult(" % ") }
         binding.dot.setOnClickListener { appendToResult(".") }
 
         binding.equal.setOnClickListener {
