@@ -5,6 +5,7 @@ import android.text.method.ScrollingMovementMethod
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.ColorUtils
 import com.example.calculator.databinding.ActivityMainBinding
+import java.util.Locale
 import javax.script.ScriptEngine
 import javax.script.ScriptEngineManager
 
@@ -37,7 +38,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.add.setOnClickListener { appendToResult(" + ") }
         binding.subtract.setOnClickListener { appendToResult(" - ") }
-        binding.multiply.setOnClickListener { appendToResult(" x ") }
+        binding.multiply.setOnClickListener {
+            appendToResult("×")
+            binding.result.setText(
+                binding.result.text.toString().replace("×", "*")
+            )
+        }
         binding.divide.setOnClickListener { appendToResult(" / ") }
         binding.percent.setOnClickListener { appendToResult(" % ") }
         binding.dot.setOnClickListener { appendToResult(".") }
@@ -48,10 +54,19 @@ class MainActivity : AppCompatActivity() {
                 val engine: ScriptEngine = ScriptEngineManager().getEngineByName("rhino")
                 try {
                     val res = engine.eval(exp).toString()
-                    val finalResult = if (res.endsWith(".0")) {
+                    var finalResult = if (res.endsWith(".0")) {
                         res.replace(".0", "")
                     } else res
+
+                    if (finalResult.contains(".")) {
+                        val value = finalResult.toDouble()
+                        finalResult = String.format(Locale.US, "%.5f", value)
+                            .trimEnd('0')
+                            .trimEnd('.')
+                    }
+
                     expression.textSize = 20f
+
                     val lighterColor = ColorUtils.setAlphaComponent(getColor(R.color.brown), 125)
                     expression.setTextColor(lighterColor)
                     expression.setText(exp)
