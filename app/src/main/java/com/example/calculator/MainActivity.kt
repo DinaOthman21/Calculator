@@ -78,7 +78,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.zero.setOnClickListener { appendToResult("0") }
-        binding.zeroo.setOnClickListener { appendToResult("00") }
+        binding.signChanger.setOnClickListener {
+            val currentText = binding.result.text.toString()
+            if (currentText.isNotEmpty()) {
+                if (currentText.startsWith("-")) {
+                    binding.result.setText(currentText.substring(1))
+                } else {
+                    binding.result.setText("-$currentText")
+                }
+            }
+        }
         binding.one.setOnClickListener { appendToResult("1") }
         binding.two.setOnClickListener { appendToResult("2") }
         binding.three.setOnClickListener { appendToResult("3") }

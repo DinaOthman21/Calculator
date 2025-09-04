@@ -121,14 +121,10 @@
                 style="@style/CalculatorButton.Number"/>
 
             <Button
-                android:id="@+id/zeroo"
+                android:id="@+id/signChanger"
                 android:layout_width="76dp"
                 android:layout_height="76dp"
-                app:icon="@drawable/ic_plus_minus"
-                app:iconTint="@color/brown"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:iconSize="16dp"
+                android:text="@string/sign"
                 app:backgroundTint="@null"
                 style="@style/CalculatorButton.Number"/>
 
